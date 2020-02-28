@@ -1,33 +1,44 @@
 package com.mock.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Table(name = "user")
 public class User {
-
 	@Id
-	@Column(name = "userId", unique = true, nullable = false)
-	private String userId;
-
-	@Column(name = "userName")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "user_id", nullable = false)
+	private long userId;
+	@NotEmpty(message = "please enter UserName")
+	@Column(name = "user_name", nullable = false)
 	private String userName;
-
-	@Column(name = "userPassword")
+	@NotEmpty(message = "please enter UserPassword")
+	@Column(name = "user_password", nullable = false)
 	private String userPassword;
+	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="user")  
+	private Roles role;
+	@Column(name = "user_enabled", nullable = false)
+	private boolean enabled;
 
-	@Column(name = "userRole")
-	private String userRole;
-
-	@Column(name = "userEnabled")
-	private boolean userEnabled;
-
-	public String getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -47,19 +58,22 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
-	public String getUserRole() {
-		return userRole;
+
+	public Roles getRole() {
+		return role;
 	}
 
-	public void setUserRole(String userRole) {
-		this.userRole = userRole;
+	public void setRole(Roles role) {
+		this.role = role;
 	}
 
-	public boolean isUserEnabled() {
-		return userEnabled;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
-	public void setUserEnabled(boolean userEnabled) {
-		this.userEnabled = userEnabled;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
+
+	
 }

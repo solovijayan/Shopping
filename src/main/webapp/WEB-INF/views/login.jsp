@@ -23,7 +23,7 @@
 
 <body>
 
-	<form method="POST" action="login" class="form-signin">
+	<form method="POST" action="/login" class="form-signin">
 		<h2 class="form-heading">Log in</h2>
 
 		<div class="form-group ${error != null ? 'has-error' : ''}">
@@ -39,7 +39,7 @@
 					</div>
 			</c:if>
 
-			<input type="text" name="userName" class="form-control"
+			<input type="text" name="username" class="form-control"
 				placeholder="username" /> <input type="password" name="password"
 				class="form-control" placeholder="Password" /> <input type="hidden"
 				name="${_csrf.parameterName}" value="${_csrf.token}" />

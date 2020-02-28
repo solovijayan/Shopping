@@ -1,7 +1,8 @@
 package com.mock.Shopping;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,7 +39,7 @@ public class ShoppingModelTest {
 		
 		user.setUserName("admin");
 		user.setUserPassword("admin");
-		user.setUserRole("admin");
+//		user.setRole("admin");
 		/*userService.saveUser(user);
 		List<User> user = userService.FetchPerson();
 		for (User user1: user) {

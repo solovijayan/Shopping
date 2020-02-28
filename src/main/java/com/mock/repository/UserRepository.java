@@ -1,5 +1,11 @@
 package com.mock.repository;
 
-public interface UserRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.mock.model.User;
+
+public interface UserRepository extends CrudRepository<User, Long> {
+
+	User findByUserName(String userName);
 
 }
