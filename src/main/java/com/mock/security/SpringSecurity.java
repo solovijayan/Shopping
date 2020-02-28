@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @ComponentScan(basePackages={"com.mock.controller","com.mock.service"}) 
@@ -41,13 +42,16 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 				// for every request i.e /home, /add .. anything it will be
 				// authenticated
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/home", true)
-				//.failureUrl("/loginError").permitAll()
+				.failureUrl("/loginError").permitAll()
 				.and().logout()
+				.logoutRequestMatcher(
+                        new AntPathRequestMatcher("/login?logout")
+                )
 				// .invalidateHttpSession(true)
 				// .deleteCookies("JSESSIONID")
 				.permitAll();
 		
-		
+		http.csrf().disable();
 
 	}
 

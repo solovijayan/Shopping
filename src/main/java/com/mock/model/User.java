@@ -1,20 +1,22 @@
 package com.mock.model;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * @author kumaran_m
+ * 
+ *         This is Entity class for user
+ *
+ */
 @Entity
 @Table(name = "user")
 public class User {
@@ -29,7 +31,7 @@ public class User {
 	@Column(name = "user_password", nullable = false)
 	private String userPassword;
 	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="user")  
+	// @JoinColumn(name="user")
 	private Roles role;
 	@Column(name = "user_enabled", nullable = false)
 	private boolean enabled;
@@ -58,7 +60,6 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
-
 	public Roles getRole() {
 		return role;
 	}
@@ -75,5 +76,4 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	
 }
