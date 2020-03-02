@@ -26,6 +26,9 @@ public class GlobalExceptionHandler {
 	public ModelAndView handleItemNotFoundException(ItemNotFoundException ie){
 		
 		logger.info(ie.getMessage());
-		return new ModelAndView("exceptionpage","message", ie.getMessage());
+		ErrorResponse e = new ErrorResponse();
+		e.setMessage(ie.getMessage());
+		e.setStatus(HttpStatus.NOT_FOUND.value());
+		return new ModelAndView("exceptionpage","error", e);
 	}
 }

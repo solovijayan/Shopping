@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-@ComponentScan(basePackages={"com.mock.controller","com.mock.service"}) 
+//@ComponentScan(basePackages={"com.mock.controller","com.mock.service"}) 
 @EntityScan(basePackages = { "com.mock.model" })
 @EnableJpaRepositories(basePackages = { "com.mock.repository" })
 @EnableWebSecurity
@@ -51,7 +51,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 				// .deleteCookies("JSESSIONID")
 				.permitAll();
 		
-		http.csrf().disable();
+//		http.csrf().disable();
 
 	}
 

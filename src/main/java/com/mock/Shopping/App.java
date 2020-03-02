@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages={"com.mock.security"}) 
+@ComponentScan(basePackages={"com.mock"}) 
 public class App 
 {
 	private static final Logger logger = LogManager.getLogger(App.class);

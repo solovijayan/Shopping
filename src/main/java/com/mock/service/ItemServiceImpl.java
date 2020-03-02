@@ -55,7 +55,7 @@ public class ItemServiceImpl implements ItemService {
 //			log4j.debug(e.getMessage());
 //		}
 			if(item == null){
-				throw new ItemNotFoundException("Item not found");
+				throw new ItemNotFoundException("Invalid Item Id ");
 			}
 		return item;
 	}
