@@ -42,11 +42,11 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 				// for every request i.e /home, /add .. anything it will be
 				// authenticated
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/home", true)
-				.failureUrl("/loginError").permitAll()
+//				.failureUrl("/loginError").permitAll()
 				.and().logout()
-				.logoutRequestMatcher(
-                        new AntPathRequestMatcher("/login?logout")
-                )
+//				.logoutRequestMatcher(
+//                        new AntPathRequestMatcher("/login?logout")
+//                )
 				// .invalidateHttpSession(true)
 				// .deleteCookies("JSESSIONID")
 				.permitAll();

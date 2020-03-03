@@ -26,18 +26,35 @@
 	<form method="POST" action="/login" class="form-signin">
 		<h2 class="form-heading">Log in</h2>
 
-		<div class="form-group ${error != null ? 'has-error' : ''}">
+		<%-- <div class="form-group ${error != null ? 'has-error' : ''}"> --%>
+			<div class="form-group ${param.error ne null ? 'has-error' : ''}">
 			<c:if test="${not empty message}">
 				
 					<div class="alert alert-success">
 						<strong>${message}</strong>
 					</div>
 			</c:if>
-			<c:if test="${not empty error}">
+			
+			
+			
+			<%-- <c:if test="${not empty error}">
 					<div class="alert alert-danger">
 						<strong>${error}</strong>
 					</div>
+			</c:if> --%>
+			
+			
+			<c:if test="${param.error ne null}">
+					<div class="alert alert-danger">
+						<strong>Your username or password is invalid.</strong>
+					</div>
 			</c:if>
+			
+			<%-- <c:if test="${param.logout ne null}">
+					<div class="alert alert-danger">
+						<strong>You have successfully logged off from application !</strong>
+					</div>
+			</c:if> --%>
 
 			<input type="text" name="username" class="form-control"
 				placeholder="username" /> <input type="password" name="password"

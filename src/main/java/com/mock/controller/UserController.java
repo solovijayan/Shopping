@@ -57,12 +57,12 @@ public class UserController {
 	 * @param model
 	 * @return login page with error message
 	 */
-	@GetMapping(value = "/loginError")
+	/*@GetMapping(value = "/loginError")
 	public String loginError(ModelMap model) {
 		logger.info("Entered failure authenticatin url");
 		model.addAttribute("error", "Your username or password is invalid.");
 		return "login";
-	}
+	}*/
 
 	/**
 	 * @param model
