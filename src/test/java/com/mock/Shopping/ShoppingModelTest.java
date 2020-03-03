@@ -1,5 +1,6 @@
 package com.mock.Shopping;
 
+import static org.junit.Assert.assertEquals;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -13,18 +14,25 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.mock.model.User;
+import com.mock.repository.UserRepository;
 import com.mock.service.UserService;
 
-@WebAppConfiguration
-@RunWith(SpringJUnit4ClassRunner.class)
-@ComponentScan(basePackages = "com.mock")
-@ContextConfiguration(classes = { TestBeanConfig.class })
+/**
+ * @author sabarinathan.r
+ *
+ */
+//@WebAppConfiguration
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ComponentScan(basePackages = "com.mock")
+//@ContextConfiguration(classes = { TestBeanConfig.class })
 public class ShoppingModelTest {
-	
+
 	private static final Logger logger = LogManager.getLogger(ShoppingModelTest.class);
-	
+
 	@Autowired
 	UserService userService;
+	@Autowired
+	UserRepository userRepository;
 	private User user;
 
 	@Before
@@ -36,15 +44,12 @@ public class ShoppingModelTest {
 	@Test
 	public void testUser() {
 		logger.info("Starting test of user model");
-		
-		user.setUserName("admin");
+		user.setUserId(1);
+		user.setUserName("sabari");
 		user.setUserPassword("admin");
-//		user.setRole("admin");
-		/*userService.saveUser(user);
-		List<User> user = userService.FetchPerson();
-		for (User user1: user) {
-			assertEquals("admin", user1.getUserName());
-		}*/
+		assertEquals(1, user.getUserId());
+		assertEquals("admin", user.getUserPassword());
+		assertEquals("sabari", user.getUserName());
 		logger.info("Ending test of user model");
 	}
 }
